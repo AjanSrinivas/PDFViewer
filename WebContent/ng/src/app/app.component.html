@@ -1,0 +1,41 @@
+<div class="col-md-12">
+  <div>
+      <div class="select" >
+        <select [(ngModel)]="myDropDown" (ngModelChange)="onChangeofOptions($event)">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+
+        <!-- <select class="custom-select" (change)="changeCity($event)" formControlName="cityName">
+            <option value="" disabled>Choose your city</option>
+            <option *ngFor="let city of City" [ngValue]="city">{{city}}</option>
+         </select> -->
+      </div>
+  </div>
+  <div>
+      <h3> Executive Summary</h3>
+      <div class="quill-container">
+          <quill-editor [(ngModel)]="htmlText" placeholder="Enter Text" [modules]="quillConfig" 
+            (onSelectionChanged)="onSelectionChanged($event)" (onContentChanged)="onContentChanged($event)"></quill-editor>
+      </div>
+      {{htmlText}}
+  </div>
+
+  <div class="col-md-12 btn-container">
+      <button type="button" class="btn btn-success btn-sm" (click)="_previewPDF($event)">Preview</button>
+  </div>
+
+  <br><br>
+
+</div>
+
+<br><br>
+<div class="pdf-container col-md-12">
+    <div class="col-md-12">
+      <pdf-viewer [src]="src" [original-size]="false" ></pdf-viewer>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
